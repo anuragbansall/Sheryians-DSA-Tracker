@@ -21,7 +21,7 @@ function App() {
         </div>
       </main>
       <Footer />
-      <Analytics /> // Vercel Analytics
+      <Analytics />
     </div>
   );
 }
