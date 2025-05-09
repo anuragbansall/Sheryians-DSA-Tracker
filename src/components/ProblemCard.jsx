@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import clsx from "clsx";
+import { LuExternalLink } from "react-icons/lu";
 
-function ProblemCard({ problem, setProblems, solved, toggleSolved }) {
+function ProblemCard({ problem, solved, toggleSolved }) {
+  const [isExpanded, setIsExpanded] = useState(false);
+
   const getDifficultyColor = (difficulty) => {
     const colorClasses = {
       easy: "bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-300",
@@ -14,6 +17,9 @@ function ProblemCard({ problem, setProblems, solved, toggleSolved }) {
       "bg-gray-100 text-gray-800 dark:bg-gray-800 dark:text-gray-300"
     );
   };
+
+  const truncatedDescription = problem.description.slice(0, 200);
+  const isDescriptionLong = problem.description.length > 200;
 
   return (
     <div
@@ -35,24 +41,26 @@ function ProblemCard({ problem, setProblems, solved, toggleSolved }) {
               {problem.id}. {problem.title}
             </span>
           </h2>
-          {problem.leetcode ? (
-            <a
-              href={problem.leetcode}
-              target="_blank"
-              className="text-blue-500 hover:underline text-sm font-normal"
-            >
-              LeetCode
-            </a>
-          ) : null}
-          {problem.geeksforgeeks ? (
-            <a
-              href={problem.geeksforgeeks}
-              target="_blank"
-              className="text-blue-500 hover:underline text-sm font-normal"
-            >
-              GeeksforGeeks
-            </a>
-          ) : null}
+          <span className="flex gap-4 items-center my-2">
+            {problem.leetcode ? (
+              <a
+                href={problem.leetcode}
+                target="_blank"
+                className="text-blue-500 hover:underline text-sm font-normal"
+              >
+                LeetCode <LuExternalLink className="inline-block ml-1" />
+              </a>
+            ) : null}
+            {problem.geeksforgeeks ? (
+              <a
+                href={problem.geeksforgeeks}
+                target="_blank"
+                className="text-blue-500 hover:underline text-sm font-normal"
+              >
+                GeeksforGeeks <LuExternalLink className="inline-block ml-1" />
+              </a>
+            ) : null}
+          </span>
         </div>
 
         <div className="my-4 md:my-0 flex flex-row md:flex-col gap-2 items-end">
@@ -70,7 +78,23 @@ function ProblemCard({ problem, setProblems, solved, toggleSolved }) {
         </div>
       </div>
 
-      <p className="mt-2 text-zinc-300">{problem.description}</p>
+      <div
+        className="text-zinc-300"
+        dangerouslySetInnerHTML={{
+          __html: isExpanded
+            ? problem.description
+            : `${truncatedDescription} ${isDescriptionLong ? "..." : ""}`,
+        }}
+      />
+
+      {isDescriptionLong && (
+        <button
+          onClick={() => setIsExpanded(!isExpanded)}
+          className="text-blue-500 mt-2 text-sm cursor-pointer hover:underline"
+        >
+          {isExpanded ? "Show Less" : "Show More"}
+        </button>
+      )}
 
       <p className="mt-6 text-sm text-zinc-500">
         {solved ? "Solved" : "Not Solved"}
