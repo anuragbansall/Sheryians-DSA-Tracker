@@ -2,6 +2,7 @@ import React from "react";
 import Header from "./components/Header";
 import ProblemList from "./components/ProblemList";
 import Footer from "./components/Footer";
+import { Analytics } from "@vercel/analytics/react";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
         </div>
       </main>
       <Footer />
+      <Analytics /> // Vercel Analytics
     </div>
   );
 }
