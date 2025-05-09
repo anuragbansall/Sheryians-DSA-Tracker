@@ -80,7 +80,7 @@ function ProblemList() {
 
   return (
     <div className="flex flex-col gap-12">
-      <div className="flex justify-between items-center gap-4">
+      <div className="flex flex-col md:flex-row justify-between items-center gap-4">
         <input
           type="text"
           placeholder="Search problems..."
@@ -92,7 +92,7 @@ function ProblemList() {
         <select
           name="category"
           id="category"
-          className="bg-zinc-950 text-white border border-zinc-700 rounded-lg p-2 w-xl"
+          className="bg-zinc-950 text-white border border-zinc-700 rounded-lg p-2 w-full md:w-xl"
           value={selectedCategory}
           onChange={(e) => setSelectedCategory(e.target.value)}
         >
@@ -107,7 +107,7 @@ function ProblemList() {
         <select
           name="difficulty"
           id="difficulty"
-          className="bg-zinc-950 text-white border border-zinc-700 rounded-lg p-2 w-xl"
+          className="bg-zinc-950 text-white border border-zinc-700 rounded-lg p-2 w-full md:w-xl"
           value={selectedDifficulty}
           onChange={(e) => setSelectedDifficulty(e.target.value)}
         >

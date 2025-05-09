@@ -13,7 +13,7 @@ function Header() {
         </h2>
       </div>
 
-      <div className="flex items-center gap-4">
+      <div className="hidden md:flex items-center gap-4">
         {[
           {
             name: "GitHub",

@@ -22,16 +22,18 @@ function ProblemCard({ problem, setProblems, solved, toggleSolved }) {
         solved ? "border-green-500" : "border-white"
       )}
     >
-      <div className="flex justify-between">
+      <div className="flex flex-col md:flex-row justify-between">
         <div className="flex flex-col gap-2">
           <h2 className="text-xl font-semibold flex items-center gap-2">
             <input
               type="checkbox"
               checked={solved}
               onChange={() => toggleSolved(problem.id)}
-              className="cursor-pointer appearance-none w-4 h-4 border border-gray-300 rounded-sm checked:bg-green-500 checked:border-transparent focus:outline-none"
+              className="cursor-pointer appearance-none w-4 h-4 border border-gray-300 rounded-sm checked:bg-green-500 checked:border-transparent focus:outline-none shrink-0"
             />
-            {problem.id}. {problem.title}
+            <span>
+              {problem.id}. {problem.title}
+            </span>
           </h2>
           {problem.leetcode ? (
             <a
@@ -53,7 +55,7 @@ function ProblemCard({ problem, setProblems, solved, toggleSolved }) {
           ) : null}
         </div>
 
-        <div className="flex flex-col gap-2 items-end">
+        <div className="my-4 md:my-0 flex flex-row md:flex-col gap-2 items-end">
           <span
             className={clsx(
               "font-semibold rounded-full px-3 py-1 text-xs",
