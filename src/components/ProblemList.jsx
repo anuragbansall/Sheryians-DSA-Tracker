@@ -79,7 +79,7 @@ function ProblemList() {
   ]);
 
   return (
-    <div className="flex flex-col gap-12">
+    <div className="flex flex-col gap-12 mb-12">
       <div className="flex flex-col md:flex-row justify-between items-center gap-4">
         <input
           type="text"

@@ -6,7 +6,7 @@ import { Analytics } from "@vercel/analytics/react";
 
 function App() {
   return (
-    <div className="w-full min-h-screen bg-zinc-900 text-white">
+    <div className="flex flex-col w-full min-h-screen bg-zinc-900 text-white">
       <Header />
       <main className="flex flex-col items-center">
         <div className="container mx-auto px-4 text-center py-8">
