@@ -1,16 +1,13 @@
 import React from "react";
 import { FiGithub } from "react-icons/fi";
 import { FiLinkedin } from "react-icons/fi";
+import SheryLogo from "../assets/shery-logo.png";
 
 function Header() {
   return (
     <div className="w-full h-16 bg-zinc-800 flex items-center justify-between px-4">
       <div className="flex items-center gap-2">
-        <img
-          src="./public/shery-logo.png"
-          alt="Sheryians Logo"
-          className="h-10"
-        />
+        <img src={SheryLogo} alt="Sheryians Logo" className="h-10" />
         <h2 className="text-white text-xl font-semibold">
           Sheryians DSA Tracker
         </h2>
