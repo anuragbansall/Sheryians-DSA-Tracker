@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import clsx from "clsx";
 import { LuExternalLink } from "react-icons/lu";
+import { Link } from "react-router-dom";
+import { FaCode } from "react-icons/fa";
 
-function ProblemCard({ problem, solved, toggleSolved }) {
+function ProblemCard({ problem, solved, toggleSolved, problemId }) {
   const [isExpanded, setIsExpanded] = useState(false);
 
   const getDifficultyColor = (difficulty) => {
@@ -96,9 +98,20 @@ function ProblemCard({ problem, solved, toggleSolved }) {
         </button>
       )}
 
-      <p className="mt-6 text-sm text-zinc-500">
-        {solved ? "Solved" : "Not Solved"}
-      </p>
+      <div className="flex justify-between">
+        <p className="mt-6 text-sm text-zinc-500">
+          {solved ? "Solved" : "Not Solved"}
+        </p>
+        <Link
+          to={`/editor/${problemId}`}
+          className="flex items-center bg-zinc-900 text-white px-4 py-2 rounded-md hover:bg-zinc-800 duration-200"
+        >
+          <span className="inline-block mr-2">
+            <FaCode />
+          </span>
+          Code
+        </Link>
+      </div>
     </div>
   );
 }

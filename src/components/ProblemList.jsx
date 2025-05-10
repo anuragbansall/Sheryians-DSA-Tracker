@@ -145,6 +145,7 @@ function ProblemList() {
               setProblems={setProblems}
               solved={solvedProblems.includes(problem.id)}
               toggleSolved={toggleSolved}
+              problemId={problem.id}
             />
           ))
         ) : (

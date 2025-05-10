@@ -910,3 +910,7 @@ export const Difficulties = [
   { id: 2, name: "medium" },
   { id: 3, name: "hard" },
 ];
+
+export const getProblemById = (id) => {
+  return Problems.find((problem) => problem.id === id);
+};
