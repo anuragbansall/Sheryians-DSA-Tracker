@@ -48,8 +48,18 @@ function ProblemList() {
     }
 
     if (searchTerm) {
-      filtered = filtered.filter((problem) =>
-        problem.title.toLowerCase().includes(searchTerm.toLowerCase())
+      filtered = filtered.filter(
+        (problem) =>
+          problem.id.toString().includes(searchTerm) ||
+          problem.title
+            .toLowerCase()
+            .includes(searchTerm.toLowerCase().trim()) ||
+          problem.category
+            .toLowerCase()
+            .includes(searchTerm.toLowerCase().trim()) ||
+          problem.difficulty
+            .toLowerCase()
+            .includes(searchTerm.toLowerCase().trim())
       );
     }
 
